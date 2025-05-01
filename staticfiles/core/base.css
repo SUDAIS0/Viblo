@@ -1,0 +1,155 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.brand {
+    background-color: black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+.brand h1 {
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212; /* Black background */
+    color: #fff; /* White text color */
+    line-height: 1.6;
+}
+
+
+/* Navigation Bar */
+.nav {
+    background-color: #5d2e88; /* Purple background */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #000; /* Black background for buttons */
+    color: white;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #9b1e59; /* Darker black on hover */
+}
+
+/* Page Container */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Forms */
+form {
+    background: #1e1e1e; /* Dark background for forms */
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input, form textarea, form button, form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #000; /* Black button background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #9b1e59; /* Darker black on hover */
+}
+
+/* Headings */
+h1, h2, h3 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Buttons */
+.button {
+    background-color: #000; /* Black button background */
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.button:hover {
+    background-color: #9b1e59; /* Darker black on hover */
+}
+
+.search-wrapper {
+    border: 0px solid black;  /* Thin black border */
+    border-radius: 30px;
+    display: inline-flex;      /* Make it fit the content size */
+    width: auto;               /* Adjusts based on the content size */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+.search-form input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 4px 10px;      /*   Adjust padding for the search input */
+    background: black;
+    color: white;
+    height: 35px;
+    width: 400px;              /* Set the width of the input */
+    border-top-left-radius: 20px;   /* Straight left side */
+    border-top-right-radius: 0px; /* Rounded top-right corner */
+    border-bottom-left-radius: 20px; /* Straight left side */
+    border-bottom-right-radius: 0px; /* Rounded bottom-right corner */
+}
+
+.search-form button {
+    border: none;
+    background: black;
+    cursor: pointer;
+    font-size: 12px;           /* Smaller search icon */
+    padding: 4px 8px;
+    height: 35px;
+    width: 40px;
+    border-top-left-radius: 0px;   /* Straight left side */
+    border-top-right-radius: 20px; /* Rounded top-right corner */
+    border-bottom-left-radius: 0px; /* Straight left side */
+    border-bottom-right-radius: 20px; /* Rounded bottom-right corner */
+}
+

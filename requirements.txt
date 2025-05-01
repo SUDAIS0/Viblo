@@ -1,0 +1,10 @@
+Django==5.0.2
+fuzzywuzzy==0.18.0
+Django==5.0.2
+fuzzywuzzy==0.18.0
+psycopg2==2.9.10          # For PostgreSQL, if using PostgreSQL as DB
+gunicorn==23.0.0           # For production deployment (optional)
+django-environ==0.12.0     # For environment variables
+Pillow==10.2.0             # If you are handling images
+djangorestframework==3.14.0 # If you're using Django REST Framework
+    

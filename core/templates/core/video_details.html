@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/video_detail.css' %}">
+{% endblock %}
+
+{% block title %}{{ video.title }}{% endblock %}
+
+{% block content %}
+<div class="video-detail-container">
+    <!-- Left: Main Video -->
+    <div class="main-video-section">
+        <div class="video-wrapper">
+            <video controls autoplay loop>
+                <source src="{{ video.video_file.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <h2 class="video-title">{{ video.title }}</h2>
+        <p class="video-description">{{ video.description|urlize|linebreaks}}</p>
+        <div class="video-meta">
+            Uploaded by <strong>{{ video.user.username }}</strong> on 
+            <em>{{ video.uploaded_at|date:"M d, Y" }}</em>
+        </div>
+
+        <!-- Like Button (Icon) -->
+        <div class="like-section">
+            {% if user.is_authenticated %}
+                <form action="{% url 'toggle_like' video.slug %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="like-button">
+                        {% if is_liked %}
+                            ❤️
+                        {% else %}
+                            🤍
+                        {% endif %}
+                        <p>Total Likes: {{ total_likes }}</p>
+                    </button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'login' %}">Login</a> to like this video.</p>
+            {% endif %}
+        </div>
+
+        <!-- Comment Section -->
+        <div class="comment-section">
+            <h3>Comments:</h3>
+
+            {% for comment in comments %}
+                <div class="comment">
+                    <strong>{{ comment.user.username }}:</strong> {{ comment.content }}
+                </div>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" name="comment">Post Comment</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'login' %}">Login</a> to comment.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Right: Suggested Videos -->
+    <div class="suggested-videos">
+        <h3>Up Next</h3>
+        {% for v in all_videos %}
+            {% if v.id != video.id %}
+            <div class="suggested-video-item">
+                <a href="{% url 'video_detail' v.slug %}">
+                    {% if v.thumbnail %}
+                        <img src="{{ v.thumbnail.url }}" alt="{{ v.title }}">
+                    {% endif %}
+                    <div class="suggested-info">
+                        <strong>{{ v.title }}</strong><br>
+                        <small>{{ v.user.username }} • {{ v.uploaded_at|date:"M d, Y" }}</small>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }       
+    </script>
+
+    
+{% endblock %}

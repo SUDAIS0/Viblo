@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/home.css' %}">
+{% endblock extra_css %}
+
+{% block title %}YouTube Clone - Home{% endblock %}
+
+{% block content %}
+    <!-- Main Heading -->
+    <h2>Latest Videos</h2>
+
+    <!-- Video List -->
+    <div class="video-list">
+        {% for video in videos %}
+            <div class="video-item">
+                <a href="{% url 'video_detail' video.slug %}">
+                    {% if video.thumbnail %}
+                        <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
+                    {% endif %}
+                    <div class="video-item-content">
+                        <h3>{{ video.title }}</h3>
+                        <small>By {{ video.user.username }} • {{ video.uploaded_at|date:"M d, Y" }}</small>
+                    </div>
+                </a>
+            </div>
+        {% empty %}
+            <p>No videos uploaded yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

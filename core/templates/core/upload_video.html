@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/auth.css' %}">
+{% endblock %}
+
+{% block title %}Upload Video{% endblock %}
+
+{% block content %}
+    <div class="upload-container">
+        <h2>Upload a New Video</h2>
+
+        <form method="POST" enctype="multipart/form-data" class="auth-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload Video</button>
+        </form>
+
+        <div class="auth-link">
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
+{% endblock %}

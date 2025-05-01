@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/search_results.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <h2>Search Results for "{{ query }}"</h2>
+
+    {% if results %}
+        <div class="video-results">
+            {% for video in results %}
+                <div class="video-item">
+                    <!-- Left: Thumbnail -->
+                    <div class="video-thumbnail">
+                        <a href="{% url 'video_detail' video.slug %}">
+                            {% if video.thumbnail %}
+                                <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
+                            {% else %}
+                                {% comment %} <img src="{% static '' %}" alt="{{ video.title }}"> {% endcomment %}
+                            {% endif %}
+                                     </a>
+                    </div>
+
+                    <!-- Right: Video Info -->
+                    <div class="video-info">
+                        <a href="{% url 'video_detail' video.slug %}">
+                            <h3>{{ video.title }}</h3>
+                        
+                        <small>By {{ video.user.username }} on {{ video.uploaded_at|date:"M d, Y" }}</small>
+                        <p>{{ video.description|truncatewords:20 }}</p>
+                    </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No matching videos found.</p>
+    {% endif %}
+{% endblock %}

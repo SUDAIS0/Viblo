@@ -1,0 +1,91 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Video List Container */
+.video-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Video Item Card */
+.video-item {
+    background-color: #1a1a1a;
+    border: 2px solid #5d2e88;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(93, 46, 136, 0.5);
+}
+
+/* Thumbnail Image */
+.video-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Maintains 1280x720 ratio */
+    object-fit: contain; /* Show full image without cropping */
+    background-color: #000; /* Fill space if aspect ratio doesn't match */
+    display: block;
+}
+
+/* Content Area */
+.video-item-content {
+    padding: 15px;
+}
+
+/* Title Styling */
+.video-item-content h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: white;
+}
+
+/* Description Styling (if used) */
+.video-item-content p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 0 0 10px;
+    white-space: pre-line;
+}
+
+/* Date Styling */
+.video-item-content small {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Remove default link styles */
+.video-item-content a {
+    text-decoration: none;  /* No underline */
+    color: inherit;         /* Inherit text color from the parent */
+}
+
+/* Hover effect for link */
+.video-item-content a:hover {
+    text-decoration: none;  /* Ensure no underline on hover */
+    color: #9d6bc3;         /* Optional: Change color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .video-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .video-list {
+        grid-template-columns: 1fr; /* 1 per row on small screens */
+    }
+}
