@@ -104,3 +104,24 @@
     margin-top: 3px; /* Reduce space between the like count and button */
     text-align: left; /* Align the text to the left */
 }
+
+
+
+.video-controls {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.control-button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.control-button:hover {
+    background-color: #007B9E;
+}
