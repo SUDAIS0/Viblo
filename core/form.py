@@ -17,7 +17,7 @@ class UserRegisterForm(forms.ModelForm):
         fields = ['username', 'email', 'password']
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
-        for fieldname in ['username', 'email                                                                                ', 'password']:
+        for fieldname in ['username', 'email', 'password']:
             self.fields[fieldname].help_text = None
 
 class CommentForm(forms.ModelForm):
