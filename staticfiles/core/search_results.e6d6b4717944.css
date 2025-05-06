@@ -1,0 +1,76 @@
+/* Default image for videos without a thumbnail */
+.video-thumbnail img {
+    width: 500px; /* Adjust size based on preference */
+    height: 300px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 8px;
+    background-color: #333; /* Add background color in case of missing thumbnail */
+}
+
+/* Layout for the search result items */
+.video-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between items */
+}
+
+/* Each individual video item */
+.video-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; /* Space between thumbnail and content */
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #1a1a1a; /* Optional: Add background color to video item */
+    border-radius: 10px; /* Rounded corners for the video items */
+    border: 2px solid #5d2e88; /* Optional: Border color */
+}
+
+/* Thumbnail container */
+.video-thumbnail {
+    flex-shrink: 0; /* Prevent the thumbnail from shrinking */
+}
+
+/* Info container: Title, description, etc. */
+.video-info {
+    flex-grow: 1; /* Allow the info to take up the remaining space */
+}
+
+/* Video title */
+.video-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: white;
+}
+
+/* Video description */
+.video-info p {
+    font-size: 0.9rem;
+    color: #ccc; /* Lighter text color for description */
+    margin: 5px 0;
+    white-space: pre-line; /* Preserve line breaks in the description */
+}
+
+/* Video date and author */
+.video-info small {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* Optional: Style for "no videos found" message */
+.video-results p {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #888;
+}
+
+/* Make sure links inside video-info do not have default link styles */
+.video-info a {
+    text-decoration: none;  /* Remove underline */
+    color: inherit;         /* Inherit the color */
+}
+
+.video-info a:hover {
+    color: #9d6bc3; /* Optional: Change hover color */
+    text-decoration: none; /* Ensure no underline on hover */
+}
